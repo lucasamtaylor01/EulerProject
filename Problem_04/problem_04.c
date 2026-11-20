@@ -1,43 +1,5 @@
 #include <stdio.h>
 
-int three_digits_multiplier() {
-  int i, j, k;
-  int limit = 100;
-  i = 999;
-  j = 999;
-
-  while (i >= limit) {
-    while (j >= limit) {
-      k = i * j;
-      j--;
-      printf("%d x %d = %d\n", i, j, k);
-    }
-    j = 999;
-    i--;
-  }
-
-  return 0;
-}
-
-int fill_array(int n) {
-
-  int array_size = digit_counter(n);
-  int divisor = array_size - 1;
-  int number_array[array_size];
-  int digit;
-  int j = 0;
-
-  while (j < array_size) {
-    digit = n / power(10, divisor);
-    number_array[j] = digit;
-    j++;
-    n = n % power(10, divisor);
-    divisor--;
-  }
-
-  return number_array;
-}
-
 int digit_counter(int n) {
   int divisor = 10;
   int counter = 1;
@@ -62,6 +24,65 @@ int power(int base, int exponent) {
   return base_power;
 }
 
+int is_palindrome(int original_n) {
+  int ind = 0;
+  int n = original_n;
+  int array_size = digit_counter(n);
+  int divisor = array_size - 1;
+  int number_array[array_size];
+  int digit;
+  int i = 0;
+
+  while (i < array_size) {
+    digit = n / power(10, divisor);
+    number_array[i] = digit;
+    i++;
+    n = n % power(10, divisor);
+    divisor--;
+  }
+
+  int j = 0;
+  int k = array_size - 1;
+  int half_array = array_size / 2;
+
+  while (j <= half_array) {
+    if (number_array[j] != number_array[k]) {
+      break;
+    } else {
+      j++;
+      k--;
+
+      if (j == half_array) {
+        ind = 1;
+      }
+    }
+  }
+  return ind;
+}
+
 int main() {
-  fill_array(1472);
+  int i, j, k;
+  i = 999;
+  j = 999;
+  int palindrome = 0;
+  int max = 0;
+
+  while (i >= 100) {
+    while (j >= 100) {
+      k = i * j;
+      palindrome = is_palindrome(k);
+      if (palindrome == 1) {
+        if (k > max) {
+          max = k;
+        }
+        palindrome = 0;
+      }
+      j--;
+    }
+    j = 999;
+    i--;
+  }
+
+  printf("The largest palindrome is: %d\n", max);
+  return 0;
 }
