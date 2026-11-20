@@ -19,6 +19,7 @@ int three_digits_multiplier() {
   return 0;
 }
 
+// try to use fill_array as function
 int fill_array(int n) {
 
   int array_size = digit_counter(n);
