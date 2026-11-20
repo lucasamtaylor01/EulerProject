@@ -9,11 +9,13 @@ int main() {
   int palindrome = 0;
   int max = 0;
 
+  // Check every product of two three-digit numbers.
   while (i >= 100) {
     while (j >= 100) {
       k = i * j;
       palindrome = is_palindrome(k);
       if (palindrome == 1) {
+        // Keep the largest palindrome found.
         if (k > max) {
           max = k;
         }

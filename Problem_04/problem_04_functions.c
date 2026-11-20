@@ -1,5 +1,6 @@
 #include "problem_04.h"
 
+// Count the number of digits in a number.
 int digit_counter(int n) {
   int divisor = 10;
   int counter = 1;
@@ -14,6 +15,7 @@ int digit_counter(int n) {
   return counter;
 }
 
+// Calculate base raised to exponent.
 int power(int base, int exponent) {
   int i;
   int base_power = 1;
@@ -24,6 +26,7 @@ int power(int base, int exponent) {
   return base_power;
 }
 
+// Check whether a number has matching digits from both ends.
 int is_palindrome(int original_n) {
   int ind = 0;
   int n = original_n;
@@ -33,6 +36,7 @@ int is_palindrome(int original_n) {
   int digit;
   int i = 0;
 
+  // Store each digit in an array.
   while (i < array_size) {
     digit = n / power(10, divisor);
     number_array[i] = digit;
@@ -45,6 +49,7 @@ int is_palindrome(int original_n) {
   int k = array_size - 1;
   int half_array = array_size / 2;
 
+  // Compare digits from the left and right sides.
   while (j <= half_array) {
     if (number_array[j] != number_array[k]) {
       break;
